@@ -1,7 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
+const MongoClient = require('mongodb').MongoClient
+const connectionString = 'mongodb+srv://twodimes:Mizzou23@cluster0.jvzkg.mongodb.net/?retryWrites=true&w=majority'
 
+
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+  .then(client => {
+    console.log('Connected to Database')
+  })
+  .catch(error => console.error(error))
+  
 //Make sure you place body-parser before your CRUD handlers!
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -20,3 +29,4 @@ app.get('/',(req, res) => {
 app.post('/quotes', (req,res) => {
   console.log(req.body);
 })
+
