@@ -20,11 +20,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       quotesCollection.find().toArray()
       .then(results => {
         console.log(results);
+        res.render('index.ejs', {quotes: results})
       })
       .catch(error => console.error(error))
-      res.sendFile(__dirname + '/index.html')
-      //Note: __dirname is the current directory you're in. Try logging it and see what you get!
-    })
+  })
     app.post('/quotes', (req,res) => {
       quotesCollection.insertOne(req.body)
       .then(result => {
