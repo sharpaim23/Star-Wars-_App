@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const { query } = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient
-const connectionString = 'mongodb+srv://twodimes:Mizzou23@cluster0.jvzkg.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://<username>:<password>@cluster0.jvzkg.mongodb.net/?retryWrites=true&w=majority'
 
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
